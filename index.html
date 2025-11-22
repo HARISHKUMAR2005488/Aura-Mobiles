@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+<meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aura Mobiles</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+        <img src="logo.png" alt="Aura Mobiles Logo" class="logo-image" />
+        <img src="logotext.png" alt="Aura Mobiles Logo Text" class="logo-text-image" />
+  </div>
+    <nav class="nav-links-container">
+      <div class="nav-links">
+        <a href="#home" class="nav-item active">
+          <i class="fas fa-home"></i>
+          <span>Home</span>
+      </a>
+        <a href="categories.html">
+          <i class="fas fa-list"></i>
+          <span>Categories</span>
+        </a>
+        <a href="product.html">
+          <i class="fas fa-product-hunt"></i>
+          <span>Products</span>
+        </a>
+        <a href="cart.html">
+          <i class="fas fa-shopping-cart"></i>
+          <span>Cart</span>
+        </a>
+        <a href="account.html">
+          <i class="fas fa-user"></i>
+          <span>Account</span>
+        </a>
+        <a href="login.html">
+          <i class="fas fa-sign-in"></i
+         onclick="openModal('loginModal')">
+         <span>Login</span>
+        </a>
+        <a href="login.html">
+          <i class="fas fa-sync-alt"></i
+         onclick="openModal('SignupModal')">
+         <span>Signup</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+  
+  <section class="header-content">
+    <div class="image-container">
+      <img src="image1.png" alt="Aura Mobiles" class="logo" />
+    </div>
+    <div class="content-details">
+      <h2>Welcome to Aura Mobiles</h2>
+      <p>Your one-stop shop for the latest and greatest smartphones. Explore our wide range of products and enjoy exclusive deals and offers.</p>
+      <a href="categories.html" class="btn">Shop Now</a>
+  </section>
+  <section>
+  </div>
+  <h1 class="animate delay-2"><center>Our Features</center></h1>
+    <div class="features">
+        <div class="feature animate delay-1">
+            <i class="fas fa-bolt"></i>
+            <div class="feature-title">Fast Delivery</div>
+            <p class="feature-desc">Order With in a minute</p>
+        </div>
+        <div class="feature animate delay-2">
+            <i class="fas fa-lock"></i>
+            <div class="feature-title">Secure</div>
+            <p class="feature-desc">End-to-end Safe of your order</p>
+        </div>
+        <div class="feature animate delay-1">
+            <i class="fas fa-palette"></i>
+            <div class="feature-title">Custom</div>
+            <p class="feature-desc">Personalized experience</p>
+        </div>
+        <div class="feature animate delay-2">
+            <i class="fas fa-sync-alt"></i>
+            <div class="feature-title">Sync</div>
+            <p class="feature-desc">Cross-device compatibility</p>
+        </div>
+    </div>
+  </section>
+<footer class="animate delay-3">
+  <div class="logo"><h3>Aura Mobiles</h3></div><br>
+  <div class="footer-links">
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="#privacy">Privacy</a>
+    <a href="#terms">Terms</a>
+  </div><br>
+  <div class="social-links">
+      <a href="#" class="social-link"><i class="fab fa-instagram"c></i></a>
+      <a href="#" class="social-link"><i class="fab fa-youtube"c></i></a>
+      <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+  </div><br>
+  <div class="copyright">© 2025 Aura Mobiles <br>
+     All rights reserved.</div>
+</footer>
+</body>
+</html>
+
+<script>
+  // Simple animation trigger
+  document.addEventListener('DOMContentLoaded', function() {
+      const animatedElements = document.querySelectorAll('.animate');
+      
+      const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                  entry.target.style.opacity = 1;
+              }
+          });
+      }, { threshold: 0.1 });
+      
+      animatedElements.forEach(element => {
+          element.style.opacity = 0;
+          observer.observe(element);
+      });
+      
+      // Active nav item switching
+      const navItems = document.querySelectorAll('.nav-item');
+      navItems.forEach(item => {
+          item.addEventListener('click', function() {
+              navItems.forEach(i => i.classList.remove('active'));
+              this.classList.add('active');
+          });
+      });
+  });
+</script>

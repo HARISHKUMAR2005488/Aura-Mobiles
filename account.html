@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+<meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aura Mobiles</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+        <img src="logo.png" alt="Aura Mobiles Logo" class="logo-image" />
+        <img src="logotext.png" alt="Aura Mobiles Logo Text" class="logo-text-image" />
+  </div>
+    <nav class="nav-links-container">
+      <div class="nav-links">
+        <a href="#home" class="nav-item">
+          <i class="fas fa-home"></i>
+          <span>Home</span>
+      </a>
+        <a href="categories.html" class="nav-item">
+          <i class="fas fa-list"></i>
+          <span>Categories</span>
+        </a>
+        <a href="product.html" class="nav-item">
+          <i class="fas fa-product-hunt"></i>
+          <span>Products</span>
+        </a>
+        <a href="cart.html" class="nav-item">
+          <i class="fas fa-shopping-cart"></i>
+          <span>Cart</span>
+        </a>
+        <a href="account.html" class="nav-item active">
+          <i class="fas fa-user"></i>
+          <span>Account</span>
+        </a>
+        <a href="login.html">
+          <i class="fas fa-sign-in"></i
+         onclick="openModal('loginModal')">
+         <span>Login</span>
+        </a>
+        <a href="signup.html">
+          <i class="fas fa-sync-alt"></i
+         onclick="openModal('SignupModal')">
+         <span>Signup</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="account-container">
+    <h2>My Account</h2>
+    <div class="account-details">
+      <p><strong>Name:</strong> <span id="account-name">John Doe</span></p>
+      <p><strong>Email:</strong> <span id="account-email">johndoe@example.com</span></p>
+      <button id="edit-account-btn">Edit Account</button>
+    </div>
+
+    <div class="edit-account-form hidden">
+      <h3>Edit Account Details</h3>
+      <form id="account-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Enter your name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Enter your email" required>
+        <button type="submit">Save Changes</button>
+        <button type="button" id="cancel-edit-btn">Cancel</button>
+      </form>
+    </div>
+  </main>
+
+  <footer class="animate delay-3">
+    <div class="logo"><h3>Aura Mobiles</h3></div><br>
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#terms">Terms</a>
+    </div><br>
+    <div class="social-links">
+        <a href="#" class="social-link"><i class="fab fa-instagram"c></i></a>
+        <a href="#" class="social-link"><i class="fab fa-youtube"c></i></a>
+        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+    </div><br>
+    <div class="copyright">© 2025 Aura Mobiles <br>
+       All rights reserved.</div>
+  </footer>
+
+  <script src="account.js"></script>
+</body>
+</html>
+
+<style>
+    /* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+header {
+  background-color: #ff4b23;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-image {
+  max-width: 50px;
+  margin-right: 10px;
+}
+
+.nav-links-container a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.nav-links-container a.active {
+  font-weight: bold;
+  color: rgb(255, 221, 0);
+}
+
+.account-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.account-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.account-details p {
+  font-size: 1.1rem;
+  margin: 10px 0;
+}
+
+.account-details button {
+  background-color: #ff4b23;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.account-details button:hover {
+  background-color: #ff4b23;
+}
+
+.edit-account-form {
+  margin-top: 20px;
+}
+
+.edit-account-form.hidden {
+  display: none;
+}
+
+.edit-account-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-account-form label {
+  margin: 10px 0 5px;
+}
+
+.edit-account-form input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.edit-account-form button {
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.edit-account-form button[type="submit"] {
+  background-color: #ff4b23;
+  color: white;
+}
+
+.edit-account-form button[type="button"] {
+  background-color: #ff4b23;
+  color: white;
+}
+
+.edit-account-form button:hover {
+  opacity: 0.9;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #ff4b23;
+  color: white;
+  margin-top: 20px;
+}
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+  const accountName = document.getElementById("account-name");
+  const accountEmail = document.getElementById("account-email");
+  const editAccountBtn = document.getElementById("edit-account-btn");
+  const editAccountForm = document.querySelector(".edit-account-form");
+  const accountForm = document.getElementById("account-form");
+  const cancelEditBtn = document.getElementById("cancel-edit-btn");
+
+  // Show the edit form
+  editAccountBtn.addEventListener("click", () => {
+    editAccountForm.classList.remove("hidden");
+    accountForm.name.value = accountName.textContent;
+    accountForm.email.value = accountEmail.textContent;
+  });
+
+  // Hide the edit form
+  cancelEditBtn.addEventListener("click", () => {
+    editAccountForm.classList.add("hidden");
+  });
+
+  // Save changes
+  accountForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    accountName.textContent = accountForm.name.value;
+    accountEmail.textContent = accountForm.email.value;
+    editAccountForm.classList.add("hidden");
+    alert("Account details updated successfully!");
+  });
+});
+</script>

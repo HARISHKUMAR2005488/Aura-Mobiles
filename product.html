@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+<meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aura Mobiles</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo-container" style="float: left;">
+        <img src="logo.png" alt="Aura Mobiles Logo" class="logo-image" />
+        <img src="logotext.png" alt="Aura Mobiles Logo Text" class="logo-text-image" />
+      </div>
+      <div class="search-container" style="float: right;">
+        <input
+          type="text"
+          id="search-bar"
+          placeholder="Search for products..."
+          oninput="searchProducts()"
+        />
+      </div>
+      <div style="clear: both;"></div>
+    </div>
+    <nav class="nav-links-container">
+      <div class="nav-links">
+        <a href="index.html" class="nav-item active">
+          <i class="fas fa-home"></i>
+          <span>Home</span>
+      </a>
+        <a href="categories.html">
+          <i class="fas fa-list"></i>
+          <span>Categories</span>
+        </a>
+        <a href="product.html">
+          <i class="fas fa-product-hunt"></i>
+          <span>Products</span>
+        </a>
+        <a href="cart.html">
+          <i class="fas fa-shopping-cart"></i>
+          <span>Cart</span>
+        </a>
+        <a href="account.html">
+          <i class="fas fa-user"></i>
+          <span>Account</span>
+        </a>
+        <a href="login.html">
+          <i class="fas fa-sign-in"></i
+         onclick="openModal('loginModal')">
+         <span>Login</span>
+        </a>
+        <a href="login.html">
+          <i class="fas fa-sync-alt"></i
+         onclick="openModal('SignupModal')">
+         <span>Signup</span>
+        </a>
+      </div>
+  </header>
+
+  <section class="offers">
+    <marquee><h2>🔥 Summer Sale - Up to 50% OFF on Smartphones!</h2></marquee>
+  </section>
+  
+  <section class="main-content">
+    <aside class="filters">
+      <h3>Filters</h3><br>
+      <h5>Brand</h5>
+      <label><input type="checkbox" value="samsung" onchange="filterProducts()"> Samsung</label><br>
+      <label><input type="checkbox" value="apple" onchange="filterProducts()"> Apple</label><br>
+      <label><input type="checkbox" value="vivo" onchange="filterProducts()"> Vivo</label><br>
+      <label><input type="checkbox" value="oneplus" onchange="filterProducts()"> OnePlus</label><br>
+      <label><input type="checkbox" value="google" onchange="filterProducts()"> Google</label><br>
+      <label><input type="checkbox" value="nokia" onchange="filterProducts()"> Nokia</label><br>
+    </aside>
+  
+    <div class="products" id="products"></div>
+  </section>
+    <!-- Product cards inserted via JS -->
+  </section>
+
+  <script>
+    // Function to redirect to the cart page
+    function redirectToCart() {
+      window.location.href = "cart.html";
+    }
+
+    // Sample product data
+    const products = [
+    {
+      id: 1,
+      name: 'Samsung M35 5G',
+      category: 'samsung',
+      price: 18999,
+      image: 'samsungm35.jpg'
+    },
+    {
+      id: 2,
+      name: 'Samsung M31 5G',
+      category: 'samsung',
+      price: 17267,
+      image: 'samsungm31.jpg'
+    },
+    {
+      id: 3,
+      name: 'Samsung S24 Ultra',
+      category: 'samsung',
+      price: 109999,
+      image: 'samsungs24.jpg'
+    },
+    {
+      id: 4,
+      name: 'Samsung F34',
+      category: 'samsung',
+      price: 18999,
+      image: 'samsungf34.jpg'
+    },
+    {
+      id: 5,
+      name: 'Google Pixel 9pro',
+      category: 'google',
+      price: 108999,
+      image: 'google pixel 9pro.jpeg'
+    },
+    {
+      id: 6,
+      name: 'Gooogle Pixel 9',
+      category: 'google',
+      price: 79999,
+      image: 'google pixel 9.jpeg'
+    },
+    
+    {
+      id: 7,
+      name: 'Google pixel 8a',
+      category: 'google',
+      price: 37999,
+      image: 'google pixel 8a.jpeg'
+    },
+      {
+        id: 8,
+      name: 'google pixel 7',
+      category: 'google',
+      price: 29999,
+      image: 'google pixel 7.jpeg'
+    },
+    {
+      id: 9,
+      name: 'iphone 16 pro max',
+      category: 'apple',
+      price: 155900,
+      image: 'iphone15pro.jpg'
+    },
+    {
+      id: 10,
+      name: 'iphone 15plus',
+      category: 'apple',
+      price: 72900,
+      image: 'iphone15plus.jpg'
+    },
+    {
+      id: 11,
+      name: 'iphone 16',
+      category: 'apple',
+      price: 79900,
+      image: 'iphone16.jpg'
+    },
+    {
+      id: 12,
+      name: 'iphone 16e',
+      category: 'apple',
+      price: 56790,
+      image: 'iphone16e.jpg'
+    },
+    {
+      id: 13,
+      name: 'vivoiqooz9turboplus',
+      category: 'vivo',
+      price: 19999,
+      image: 'vivoiqooz9turboplus.jpg'
+    },
+    {
+      id: 14,
+      name: 'vivov50e',
+      category: 'vivo',
+      price: 189,
+      image: 'vivov50e.jpg'
+    },
+    {
+      id: 15,
+      name: 'vivov50lite5g',
+      category: 'vivo',
+      price: 28999,
+      image: 'vivov50lite5g.jpg'
+    },
+    {
+      id: 16,
+      name: 'vivox100ultra',
+      category: 'vivo',
+      price: 54990,
+      image: 'vivox100ultra.jpg'
+    },
+    {
+      id: 17,
+      name: 'oneplus12',
+      category: 'oneplus',
+      price: 56998,
+      image: 'oneplus12.jpg'
+    },
+    {
+      id: 18,
+      name: 'oneplus13t',
+      category: 'oneplus',
+      price: 64999,
+      image: 'oneplus13t.jpg'
+    },
+    {
+      id: 19,
+      name: 'oneplusnordce4',
+      category: 'oneplus',
+      price: 23989,
+      image: 'oneplusnordce4.jpg'
+    },
+    {
+      id: 20,
+      name: 'oneplusnordce5',
+      category: 'oneplus',
+      price: 24999,
+      image: 'oneplusnordce5.jpg'
+    },
+    {
+      id: 23,
+      name: 'Nokia 1100',
+      category: 'nokia',
+      price: 1699,
+      image: 'nokia.jpg'
+    },
+    {
+      id: 24,
+      name: 'Nokia 2720 Flip',
+      category: 'nokia',
+      price: 3149,
+      image: 'nokiaflip.jpg'
+    },
+    {
+      id: 25,
+      name: 'Nokia 6.2',
+      category: 'nokia',
+      price: 6289,
+      image: 'nokia 6.2.jpeg'
+    },
+    {
+      id: 26,
+      name: 'Nokia c31',
+      category: 'nokia',
+      price: 8899,
+      image: 'nokia c31.jpeg'
+    }
+
+  ];
+  
+    // Function to render products
+function renderProducts(filteredProducts = products) {
+  const productsContainer = document.querySelector(".products");
+
+  // Clear the container
+  productsContainer.innerHTML = "";
+
+  // Loop through the filtered products and create product cards
+  filteredProducts.forEach((product) => {
+    const productCard = document.createElement("div");
+    productCard.classList.add("product-card");
+
+    productCard.innerHTML = `
+      <img src="${product.image}" alt="${product.name}">
+      <h3 class="product-name">${product.name}</h3>
+      <p class="price">₹${product.price}</p>
+      <button onclick="addToCart(${product.id})">Add to Cart</button>
+    `;
+
+    productsContainer.appendChild(productCard);
+  });
+}
+
+// Function to filter products by brand
+function filterProducts() {
+  const checkboxes = document.querySelectorAll(".filters input[type='checkbox']");
+  const selectedBrands = Array.from(checkboxes)
+    .filter((checkbox) => checkbox.checked)
+    .map((checkbox) => checkbox.value);
+
+  const filteredProducts = selectedBrands.length
+    ? products.filter((product) => selectedBrands.includes(product.category))
+    : products;
+
+  renderProducts(filteredProducts);
+}
+
+// Function to search products by name
+function searchProducts() {
+  const searchInput = document.getElementById("search-bar").value.toLowerCase();
+
+  const filteredProducts = products.filter((product) =>
+    product.name.toLowerCase().includes(searchInput)
+  );
+
+  renderProducts(filteredProducts);
+}
+
+// Call the function to render all products on page load
+document.addEventListener("DOMContentLoaded", () => {
+  renderProducts(products); // Render all products on startup
+});
+
+// Function to add a product to the cart
+function addToCart(productId) {
+  const product = products.find((p) => p.id === productId);
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart.push(product);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert(`${product.name} has been added to your cart!`);
+}
+      </script>
+    </section>
+    
+    <button class="go-to-cart-btn" onclick="redirectToCart()">
+      <i class="fas fa-shopping-cart"></i> Go to Cart
+    </button>
+
+    <footer class="animate delay-3">
+      <div class="logo"><h3>Aura Mobiles</h3></div><br>
+      <div class="footer-links">
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#terms">Terms</a>
+      </div><br>
+      <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-instagram"c></i></a>
+          <a href="#" class="social-link"><i class="fab fa-youtube"c></i></a>
+          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+      </div><br>
+      <div class="copyright">© 2025 Aura Mobiles <br>
+         All rights reserved.</div>
+    </footer>
+</body>
+</html>

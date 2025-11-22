@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart | Aura Mobiles</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1 class="logo-text">Aura Mobiles</h1>
+    <h2>Your Cart</h2>
+  </header>
+
+  <section class="cart-container">
+    <div class="cart-items" id="cart-items">
+      <!-- Cart items will be dynamically added here -->
+    </div>
+    <div class="cart-summary">
+      <h3>Cart Summary</h3>
+      <p>Total Items: <span id="total-items">0</span></p>
+      <p>Total Price: ₹<span id="total-price">0</span></p>
+      <button id="checkout-btn">Checkout</button>
+    </div>
+  </section>
+
+  <script>
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+// Function to render cart items
+function renderCart() {
+  const cartItemsContainer = document.getElementById("cart-items");
+  const totalItemsElement = document.getElementById("total-items");
+  const totalPriceElement = document.getElementById("total-price");
+
+  // Clear the cart container
+  cartItemsContainer.innerHTML = "";
+
+  // Calculate total items and price
+  let totalItems = 0;
+  let totalPrice = 0;
+
+  cart.forEach((item, index) => {
+    totalItems += 1;
+    totalPrice += item.price;
+
+    // Create cart item element
+    const cartItem = document.createElement("div");
+    cartItem.classList.add("cart-item");
+
+    cartItem.innerHTML = `
+      <img src="${item.image}" alt="${item.name}">
+      <div class="cart-item-details">
+        <h4>${item.name}</h4>
+        <p>Price: $${item.price}</p>
+      </div>
+      <button onclick="removeFromCart(${index})">Remove</button>
+    `;
+
+    cartItemsContainer.appendChild(cartItem);
+  });
+
+  // Update total items and price
+  totalItemsElement.textContent = totalItems;
+  totalPriceElement.textContent = totalPrice.toFixed(2);
+}
+
+// Function to remove an item from the cart
+function removeFromCart(index) {
+  cart.splice(index, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCart();
+}
+
+// Render cart on page load
+document.addEventListener("DOMContentLoaded", renderCart);
+  </script>
+  <footer class="animate delay-3">
+    <div class="logo"><h3>Aura Mobiles</h3></div><br>
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#terms">Terms</a>
+    </div><br>
+    <div class="social-links">
+        <a href="#" class="social-link"><i class="fab fa-instagram"c></i></a>
+        <a href="#" class="social-link"><i class="fab fa-youtube"c></i></a>
+        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+    </div><br>
+    <div class="copyright">© 2025 Aura Mobiles <br>
+       All rights reserved.</div>
+  </footer>
+</body>
+</html>
+<style>
+    /* Cart Page Styles */
+.cart-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cart-items {
+  flex: 2;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.cart-item img {
+  width: 80px;
+  height: auto;
+  border-radius: 5px;
+}
+
+.cart-item-details {
+  flex: 1;
+  margin-left: 15px;
+}
+
+.cart-item-details h4 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.cart-item-details p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.cart-item button {
+  background-color: #ff4b23;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cart-item button:hover {
+  background-color: #d43f1a;
+}
+
+.cart-summary {
+  flex: 1;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.cart-summary h3 {
+  margin-bottom: 15px;
+}
+
+.cart-summary p {
+  margin: 10px 0;
+}
+
+.cart-summary button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cart-summary button:hover {
+  background-color: #218838;
+}
+</style>

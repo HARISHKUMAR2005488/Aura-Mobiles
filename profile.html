@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobique Profile</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f2f5;
+    }
+    header {
+      background-color: #000000;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.5rem;
+    }
+    .profile-container {
+      max-width: 400px;
+      margin: 2rem auto;
+      background-color: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    .profile-container img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+    .profile-container h2 {
+      margin-bottom: 0.5rem;
+    }
+    .profile-container p {
+      color: #666;
+      margin-bottom: 1rem;
+    }
+    .profile-container .btn {
+      background-color: #2d2dff;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .profile-container .btn:hover {
+      background-color: #1a1abf;
+    }
+  </style>
+</head>
+<body>
+  <header>My Profile</header>
+  <section>
+    <br>
+    <center>
+        <label for="name">Name:</label>
+        <input type="text" placeholder="Enter Your Name" id="name" name="name" required><br><br>
+        <label for="email">Email:</label>
+        <input type="email" placeholder="Enter Your Email" id="email" name="email" required><br><br>
+        <label for="phoneno">phone no:</label>
+        <textarea id="message" placeholder="Enter your phone Number" name="phoneno" required></textarea><br><br>
+        <button type="submit">Edit Profile</button>
+        <button type="submit">Save</button>
+    </form>
+</center>
+</section>
+
+  <script>
+    function editProfile() {
+      alert("Edit profile functionality coming soon!");
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+<meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aura Mobiles</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+        <img src="logo.png" alt="Aura Mobiles Logo" class="logo-image" />
+        <img src="logotext.png" alt="Aura Mobiles Logo Text" class="logo-text-image" />
+  </div>
+    <nav class="nav-links-container">
+      <div class="nav-links">
+        <a href="index.html" class="nav-item active">
+          <i class="fas fa-home"></i>
+          <span>Home</span>
+      </a>
+        <a href="#categories">
+          <i class="fas fa-list"></i>
+          <span>Categories</span>
+        </a>
+        <a href="product.html">
+          <i class="fas fa-product-hunt"></i>
+          <span>Products</span>
+        </a>
+        <a href="cart.html">
+          <i class="fas fa-shopping-cart"></i>
+          <span>Cart</span>
+        </a>
+        <a href="account.html">
+          <i class="fas fa-user"></i>
+          <span>Account</span>
+        </a>
+        <a href="login.html">
+          <i class="fas fa-sign-in"></i
+         onclick="openModal('loginModal')">
+         <span>Login</span>
+        </a>
+        <a href="login.html">
+          <i class="fas fa-sync-alt"></i
+         onclick="openModal('SignupModal')">
+         <span>Signup</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Category Filter -->
+  <div class="category-filter">
+    <a href="products.html?category=all">
+      <button>All</button>
+    </a>
+    <a href="products.html?category=samsung">
+      <button>
+        <img src="samsunglogo.png" alt="Samsung" style="width: 50px; height: 50px; vertical-align: middle;"><br> Samsung
+      </button>
+    </a>
+    <a href="products.html?category=apple">
+      <button>
+        <img src="applelogo.png" alt="Apple" style="width: 50px; height: 50px; vertical-align: middle;"><br> Apple
+      </button>
+    </a>
+    <a href="products.html?category=google">
+      <button>
+        <img src="googlelogo.png" alt="Google" style="width: 50px; height: 50px; vertical-align: middle;"><br> Google
+      </button>
+    </a>
+    <a href="products.html?category=vivo">
+      <button>
+        <img src="vivologo.png" alt="Vivo" style="width: 50px; height: 50px; vertical-align: middle;"><br> Vivo
+      </button>
+    </a>
+    <a href="products.html?category=oneplus">
+      <button>
+        <img src="onepluslogo.png" alt="OnePlus" style="width: 50px; height: 50px; vertical-align: middle;"><br> OnePlus
+      </button>
+    </a>
+    <a href="products.html?category=nokia">
+      <button>
+        <img src="nokialogo.png" alt="Nokia" style="width: 50px; height: 50px; vertical-align: middle;"><br> Nokia
+      </button>
+    </a>
+  </div>
+  <footer class="animate delay-3">
+    <div class="logo"><h3>Aura Mobiles</h3></div><br>
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#terms">Terms</a>
+    </div><br>
+    <div class="social-links">
+        <a href="#" class="social-link"><i class="fab fa-instagram"c></i></a>
+        <a href="#" class="social-link"><i class="fab fa-youtube"c></i></a>
+        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+    </div><br>
+    <div class="copyright">© 2025 Aura Mobiles <br>
+       All rights reserved.</div>
+  </footer>
+
+</body>
+</html>
+<script>
+  // Sample product data
+  const products = [
+    { id: 1, name: "Samsung Galaxy S21", category: "samsung", price: 79999, image: "samsung-s21.jpg" },
+    { id: 2, name: "Apple iPhone 13", category: "apple", price: 99999, image: "iphone-13.jpg" },
+    { id: 3, name: "Google Pixel 6", category: "google", price: 59999, image: "pixel-6.jpg" },
+    { id: 4, name: "Vivo X70 Pro", category: "vivo", price: 69999, image: "vivo-x70.jpg" },
+    { id: 5, name: "OnePlus 9", category: "oneplus", price: 72999, image: "oneplus-9.jpg" },
+    { id: 6, name: "Nokia 3310", category: "nokia", price: 4999, image: "nokia-3310.jpg" },
+  ];
+
+  // Function to get query parameter
+  function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+  }
+
+  // Function to render products
+  function renderProducts() {
+    const productsContainer = document.querySelector(".products");
+    const category = getQueryParam("category") || "all";
+
+    // Clear the container
+    productsContainer.innerHTML = "";
+
+    // Filter products based on the selected category
+    const filteredProducts = category === "all"
+      ? products
+      : products.filter((product) => product.category === category);
+
+    // Render the filtered products
+    filteredProducts.forEach((product) => {
+      const productCard = document.createElement("div");
+      productCard.classList.add("product-card");
+
+      productCard.innerHTML = `
+        <img src="${product.image}" alt="${product.name}">
+        <h3 class="product-name">${product.name}</h3>
+        <p class="price">₹${product.price}</p>
+        <button onclick="addToCart(${product.id})">Add to Cart</button>
+      `;
+
+      productsContainer.appendChild(productCard);
+    });
+  }
+
+  // Function to add a product to the cart
+  function addToCart(productId) {
+    const product = products.find((p) => p.id === productId);
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push(product);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert(`${product.name} has been added to your cart!`);
+  }
+
+  // Render products on page load
+  document.addEventListener("DOMContentLoaded", renderProducts);
+</script>
+<style>
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: black; /* Set the body text color to black */
+}
+
+.header-container {
+  text-align: center;
+  padding: 20px;
+  background-color: #ff4b23;
+  color: white;
+}
+
+.header-container h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+.header-container h2 {
+  margin: 10px 0 0;
+  font-size: 1.5rem;
+}
+
+/* Category Filter Section */
+.category-filter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 100px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 1200px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.category-filter a {
+  text-decoration: none;
+}
+
+.category-filter button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.category-filter button:hover {
+  background-color: #ff4b23;
+  transform: scale(1.05);
+}
+
+.category-filter button img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 10px;
+}
+
+.category-filter button br {
+  display: none; /* Optional: Hide the <br> tag for cleaner layout */
+}
+
+footer {
+    background-color: #ff4b23;
+    text-align: center;
+    padding: 15px;
+    margin-top: 90px;
+    color: white;
+  }
+  .footer-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 1rem; 
+    transition: color 0.3s; 
+}
+
+  .social-link {
+    color: white;
+    font-size: 1.5rem;
+    margin: 0 10px;
+    transition: color 0.3s;
+  }
+
+.footer-links a:hover {
+    color: #ffeff4; 
+}
+</style>

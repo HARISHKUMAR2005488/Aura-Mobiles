@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Aura Mobiles</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <section id="contact" class="contact-form">
+      <h2><span>Contact Us</span></h2>
+      <form onsubmit="event.preventDefault(); alert('Message Sent!');">
+        <label for="text">User Name</label>
+        <input type="text" placeholder="Your Name" required><br><br>
+        <label for="email">Email Id</label>
+        <input type="email" placeholder="Your Email" required><br><br>
+        <label for="text">Message</label>
+        <textarea rows="4" placeholder="Your Message" required></textarea><br><br>
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+    <br>
+     <footer class="animate delay-3">
+        <div class="logo"><h2>Aura Mobiles</h2></div><br>
+        <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+        </div><br>
+        <div class="copyright">© 2025 Aura mobiles <br>
+           All rights reserved.</div>
+    </footer>
+    
+</body>
+</html>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  body {
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .contact-form {
+    background-color: #fff;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    margin-top: 50px;
+  }
+
+  /* Contact Us Text Styles */
+.contact-form h2 {
+  text-align: center;
+  font-size: 2rem; /* Adjust the size of the text */
+  color: #ff4b23; /* Vibrant color for the heading */
+  margin-bottom: 20px; /* Add spacing below the heading */
+  font-weight: bold;
+}
+
+  .contact-form label {
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #333;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .contact-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #ff4b23;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .contact-form button:hover {
+    background-color: #e0431f;
+  }
+
+  footer {
+    background-color: #ff4b23;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    font-family: Arial, sans-serif;
+  }
+  .footer-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+  }
+  .footer-links a:hover {
+    text-decoration: underline;
+  }
+  .social-links {
+    margin: 15px 0;
+  }
+  .social-link {
+    color: white;
+    margin: 0 10px;
+    font-size: 1.5em;
+  }
+  .social-link:hover {
+    color: #ff4b23;
+  }
+  .copyright {
+    font-size: 0.9em;
+    margin-top: 10px;
+  }
+</style>
